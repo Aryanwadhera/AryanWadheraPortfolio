@@ -1,24 +1,23 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Aryan",
+  lastName: "Wadhera",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  role: "Software Engineer",
+  avatar: "/images/avatar.jpeg",
+  location: "America/Los_Angeles", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "Hindi"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
   display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>Subscribe to {person.firstName}'s Newsletter - Coming Soon</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      Coming Soon
     </>
   ),
 };
@@ -29,12 +28,12 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/aryanwadhera",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/aryanwadhera",
   },
   {
     name: "X",
@@ -42,9 +41,9 @@ const social = [
     link: "",
   },
   {
-    name: "Email",
+    name: "Aryan@wadheras.com",
     icon: "email",
-    link: "mailto:example@gmail.com",
+    link: "mailto:aryan@wadheras.com",
   },
 ];
 
@@ -52,11 +51,11 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design engineer and builder</>,
+  headline: <>Software Engineer</>,
   subline: (
     <>
-      I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Aryan, a Freelance Software Engineer, I craft intuitive
+      <br /> user experiences. After client project, I build my own shit.
     </>
   ),
 };
@@ -74,16 +73,14 @@ const about = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://cal.com/aryanwadhera",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Hi, I’m Aryan Wadhera, a high school student and founder of Moonlit Company Enterprises, a software development company. I’m passionate about technology and coding, and I’ve worked as a social media manager for Nekter Juice Bar, helping with marketing strategies. I’m dedicated, detail-oriented, and always eager to learn and grow. Thanks for reading!
       </>
     ),
   },
@@ -92,58 +89,128 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Hack Club",
+        timeframe: "Jan 2025 - Present",
+        role: "Co-Host at Scrapyard Irvine",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Scrapyard is a global hackathon running in Location TBD and 100+ other cities by high schoolers (like Counterspell) with a "scrappy" theme of stupid inventions! It's organized by Hack Club, a 501(c)(3) nonprofit that supports a global community of 48k high school makers.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Leading the organization of Scrapyard's Irvine chapter, part of a worldwide network of student-led hackathons focused on fostering creativity and innovation in high school students.
           </>,
         ],
         images: [
-          // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
+            src: "/images/projects/project-01/ScrapyardIrvine1.png",
+            alt: "Event Image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/project-01/ScrapyardIrvine2.png",
+            alt: "Partner Event Image",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Nekter Juice Bar",
+        timeframe: "Jul 2024 - Present",
+        role: "Team Member",
+        achievements: [],
+        images: [
+          {
+            src: "/images/projects/project-01/NekterJuiceBar1.jpg",
+            alt: "Store Photo",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        company: "Impact Code",
+        timeframe: "Oct 2023 - Present",
+        role: "Chief Operating Officer - ex CEO",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
+          Impact Code is a charitable entity aimed at enlightening the emerging generation about the evolution and application of AI, additionally granting coding skills and prospects. Our purpose is to embolden and inform, eradicating obstacles by offering universally accessible coding education, regardless of individual circumstances.
+        </>,
+        ],
+        images: [
+          {
+            src: "/images/projects/project-01/ImpactCode1.png",
+            alt: "Website Photo",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/project-01/ImpactCode2.png",
+            alt: "Website Photo",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        company: "Moonlit Company Enterprises",
+        timeframe: "Oct 2021 - Nov 2023",
+        role: "Chief Executive Officer & Founder",
+        achievements: [
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
+          Moonlit is a multifaceted development firm that stands out for its diverse portfolio. It not only owns a range of companies, such as MyID, The Connect Apps, Blank Card, and Moon Media, but also offers a variety of in-house products like Moonlit Accounts, Moonlit Billing, and Moonlit SAFE. Additionally, Moonlit provides comprehensive services through Moonlit Development and Moonlit App Maintenance. With a primary focus on development, Moonlit seamlessly integrates its own products and services into its impressive repertoire.
+        </>,
         ],
         images: [],
+      },
+      {
+        company: "Future Business Leaders of America, Inc. (FBLA)",
+        timeframe: "Mar 2022 - Oct 2023",
+        role: "Software Engineer",
+        achievements: [
+          <>
+          Future Business Leaders of America is the largest business career & technical student organization in the world.
+        </>,
+          <>
+          Future Business Leaders of America is has a branch in Eleanor Roosevelt High School and I am a part of it. I am a software engineer and I am responsible for developing and maintaining the database for the organization.
+        </>
+        ],
+        images: [],
+      },
+      {
+        company: "Nekter Juice Bar",
+        timeframe: "Jun 2020 - Apr 2023",
+        role: "Social Media Manager & Team Member",
+        achievements: [],
+        images: [
+          {
+            src: "/images/projects/project-01/NekterJuiceBarA.jpg",
+            alt: "Store Photo",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/project-01/NekterJuiceBarSD.png",
+            alt: "Store Photo",
+            width: 16,
+            height: 9,
+          },
+        ],
       },
     ],
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studies",
+    title: "Education",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Arnold O Beckman High School",
+        description: <>Would leave in a sec if i could.</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Eastvale Stem Academy - Eleanor Roosevelt High School",
+        description: <>My favorite High School which if i could would go back to for my senior year. -My Computer Science Teacher hated me because i ignored his authority lollll.</>,
       },
     ],
   },
@@ -153,34 +220,16 @@ const about = {
     skills: [
       {
         title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+        description: <>Able to prototype in Figma with unnatural speed.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
         ],
       },
       {
         title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
+        description: <>Building next gen apps with Next.js + Firebase + more.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
         ],
       },
     ],
