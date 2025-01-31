@@ -1,36 +1,35 @@
 import { getPosts } from "@/app/utils/utils";
-import { Column } from "@/once-ui/components";
-import { ProjectCard } from "@/components";
+import { Column, Button, SmartImage, Text, Flex } from "@/once-ui/components";
 
-interface ProjectsProps {
-  range?: [number, number?];
-}
+export function Projects({ range = [0] }: { range?: number[] }) {
+  const posts = getPosts(["src", "app", "work", "projects"]);
+  const selectedPosts = range.length === 2 
+    ? posts.slice(range[0] - 1, range[1])
+    : posts.slice(range[0] - 1);
 
-export function Projects({ range }: ProjectsProps) {
-  let allProjects = getPosts(["src", "app", "work", "projects"]);
-
-  const sortedProjects = allProjects.sort((a, b) => {
-    return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
-  });
-
-  const displayedProjects = range
-    ? sortedProjects.slice(range[0] - 1, range[1] ?? sortedProjects.length)
-    : sortedProjects;
+  if (!selectedPosts.length) return null;
 
   return (
-    <Column fillWidth gap="xl" marginBottom="40" paddingX="l">
-      {displayedProjects.map((post, index) => (
-        <ProjectCard
-          priority={index < 2}
-          key={post.slug}
-          href={`work/${post.slug}`}
-          images={post.metadata.images}
-          title={post.metadata.title}
-          description={post.metadata.summary}
-          content={post.content}
-          avatars={post.metadata.team?.map((member) => ({ src: member.avatar })) || []}
-          link={post.metadata.link || ""}
-        />
+    <Column gap="l">
+      {selectedPosts.map((post) => (
+        <Column key={post.slug} gap="m">
+          <Button href={`/work/${post.slug}`} variant="tertiary">
+            <Column gap="m">
+              {post.metadata.images?.length > 0 && (
+                <SmartImage
+                  priority
+                  aspectRatio="16 / 9"
+                  radius="m"
+                  alt="Project cover"
+                  src={post.metadata.images[0]}
+                />
+              )}
+              <Flex fillWidth horizontal="space-between" vertical="center" gap="m">
+                <Text variant="heading-strong-m">{post.metadata.title}</Text>
+              </Flex>
+            </Column>
+          </Button>
+        </Column>
       ))}
     </Column>
   );
