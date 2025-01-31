@@ -14,53 +14,72 @@ interface WorkParams {
 }
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "work", "projects"]);
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  try {
+    const posts = getPosts(["src", "app", "work", "projects"]);
+    if (!posts || posts.length === 0) {
+      return [{ slug: 'momentumbuilt' }]; // Provide at least one default slug
+    }
+    return posts.map((post) => ({
+      slug: post.slug,
+    }));
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [{ slug: 'momentumbuilt' }]; // Fallback to default slug
+  }
 }
 
-export function generateMetadata({ params: { slug } }: WorkParams) {
-  let post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === slug);
+export async function generateMetadata({ params: { slug } }: WorkParams) {
+  try {
+    let post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === slug);
 
-  if (!post) {
-    return;
+    if (!post) {
+      return {
+        title: 'Project Not Found',
+        description: 'The requested project could not be found.'
+      };
+    }
+
+    let {
+      title,
+      publishedAt: publishedTime,
+      summary: description,
+      images,
+      image,
+      team,
+    } = post.metadata;
+    let ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
+
+    return {
+      title,
+      description,
+      images,
+      team,
+      openGraph: {
+        title,
+        description,
+        type: "article",
+        publishedTime,
+        url: `https://${baseURL}/work/${post.slug}`,
+        images: [
+          {
+            url: ogImage,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: [ogImage],
+      },
+    };
+  } catch (error) {
+    console.error('Error generating metadata:', error);
+    return {
+      title: 'Error',
+      description: 'Failed to load project metadata'
+    };
   }
-
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    images,
-    image,
-    team,
-  } = post.metadata;
-  let ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
-
-  return {
-    title,
-    description,
-    images,
-    team,
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      publishedTime,
-      url: `https://${baseURL}/work/${post.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
 }
 
 export default function Project({ params }: WorkParams) {
